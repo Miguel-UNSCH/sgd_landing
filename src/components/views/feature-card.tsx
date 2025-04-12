@@ -22,13 +22,13 @@ export function FeatureCard({ icon, title, description }: FeatureCardProps) {
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
+      <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#4CAF50]/10 dark:bg-black/40 backdrop-blur-sm dark:border-white/10">
         <CardHeader className="pb-2">
-          <div className="mb-2 text-primary">{icon}</div>
-          <CardTitle>{title}</CardTitle>
+          <div className="mb-2 text-[#4CAF50]">{icon}</div>
+          <CardTitle className="dark:text-white">{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          <CardDescription className="text-base">{description}</CardDescription>
+          <CardDescription className="text-base dark:text-white/70">{description}</CardDescription>
         </CardContent>
       </Card>
     </motion.div>

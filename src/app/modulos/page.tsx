@@ -1,19 +1,18 @@
-'use client'
+"use client"
 
+import { useRef } from "react"
 import { ExternalLink } from "lucide-react"
+import { motion, useInView } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 const modules = [
   {
     title: "Sistema de trámite documentario",
     description: "Gestión de documentos administrativos con firma digital",
     url: "https://192.168.1.246/sgd/login.do",
-    credentials: [
-      { label: "ADMINISTRADOR", user: "ADMIN", pass: "Admin2018" },
-      { label: "USUARIOS", user: "N° DNI", pass: "N° DNI (por única vez, se le solicitará actualizar)" },
-    ],
+    credentials: [],
   },
   {
     title: "Mesa de partes del ciudadano",
@@ -37,68 +36,64 @@ const modules = [
     title: "Mesa de partes virtual de interoperabilidad",
     description: "Sistema de interoperabilidad entre entidades",
     url: "https://192.168.1.246/mpv/login.jsf",
-    credentials: [{ label: "Nota", user: "", pass: "Tiene acceso solo el ADMIN" }],
+    credentials: [],
   },
   {
     title: "Módulo adicional de configuraciones del SGD",
     description: "Configuraciones avanzadas del sistema",
     url: "https://192.168.1.246:3443/",
-    credentials: [{ label: "Nota", user: "", pass: "Tiene acceso solo el ADMIN" }],
+    credentials: [],
   },
   {
     title: "Módulo adicional de seguimiento de documentos",
     description: "Seguimiento de documentos administrativos y documentos de mesa de partes del ciudadano",
     url: "https://192.168.1.246:4443/",
-    credentials: [
-      {
-        label: "Nota",
-        user: "",
-        pass: "Tienen acceso todos los usuarios internos de la institución que tengan cuenta en el SGD",
-      },
-    ],
+    credentials: [],
   },
 ]
 
 export default function ModulosPage() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
+
   return (
-    <div className="container py-12">
-      <div className="mb-12 text-center">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight">Módulos del Sistema</h1>
-        <p className="mx-auto max-w-[700px] text-lg text-muted-foreground">
+    <div className="container py-20">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.7 }}
+        className="mb-12 text-center"
+      >
+        <h1 className="mb-4 text-4xl font-bold tracking-tight dark:text-white">Módulos del Sistema</h1>
+        <p className="mx-auto max-w-[700px] text-lg dark:text-white/70">
           Accede a los diferentes módulos del Sistema de Gestión Documental
         </p>
-      </div>
+      </motion.div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {modules.map((module, index) => (
-          <Card key={index} className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg">
-            <CardHeader className="bg-muted/50">
-              <CardTitle>{module.title}</CardTitle>
-              <CardDescription>{module.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-1 pt-6">
-              {module.credentials.length > 0 && (
-                <div className="space-y-2">
-                  <h4 className="font-medium">Credenciales:</h4>
-                  {module.credentials.map((cred, idx) => (
-                    <div key={idx} className="text-sm">
-                      <p className="font-medium">{cred.label}</p>
-                      {cred.user && <p>Usuario: {cred.user}</p>}
-                      {cred.pass && <p>Contraseña: {cred.pass}</p>}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </CardContent>
-            <CardFooter>
-              <Button asChild className="w-full">
-                <a href={module.url} target="_blank" rel="noopener noreferrer">
-                  Acceder
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-            </CardFooter>
-          </Card>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#4CAF50]/10 dark:bg-black/40 backdrop-blur-sm dark:border-white/10">
+              <CardHeader>
+                <CardTitle className="dark:text-white">{module.title}</CardTitle>
+                <CardDescription className="dark:text-white/70">{module.description}</CardDescription>
+              </CardHeader>
+              <CardFooter>
+                <Button asChild className="w-full bg-[#4CAF50] hover:bg-[#45a049] text-white border-none">
+                  <a href={module.url} target="_blank" rel="noopener noreferrer">
+                    Acceder
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+                </Button>
+              </CardFooter>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>
