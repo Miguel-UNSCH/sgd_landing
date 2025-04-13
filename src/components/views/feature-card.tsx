@@ -24,11 +24,11 @@ export function FeatureCard({ icon, title, description }: FeatureCardProps) {
     >
       <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#4CAF50]/10 dark:bg-black/40 backdrop-blur-sm dark:border-white/10">
         <CardHeader className="pb-2">
-          <div className="mb-2 text-[#4CAF50]">{icon}</div>
-          <CardTitle className="dark:text-white">{title}</CardTitle>
+          <div className="mb-2 text-primary">{icon}</div>
+          <CardTitle className="text-secondary-foreground">{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          <CardDescription className="text-base dark:text-white/70">{description}</CardDescription>
+          <CardDescription className="text-base text-muted-foreground">{description}</CardDescription>
         </CardContent>
       </Card>
     </motion.div>

@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { motion, useInView, useAnimation } from "framer-motion"
@@ -43,7 +42,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden py-20 md:py-32">
+    <section className="relative min-h-screen flex items-center overflow-hidden py-20 md:py-32">
       {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -53,7 +52,7 @@ export function HeroSection() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/60" /> {/* Overlay más oscuro para mejor contraste */}
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <div className="container relative z-10">
@@ -71,7 +70,7 @@ export function HeroSection() {
             Sistema de Gestión Documental
           </motion.h1>
 
-          <motion.p variants={itemVariants} className="mb-8 text-lg text-white/90 md:text-xl max-w-2xl">
+          <motion.p variants={itemVariants} className="mb-8 text-lg text-white/70 md:text-xl max-w-2xl">
             Plataforma integral para la gestión de trámites documentarios con firma digital e interoperabilidad para la
             Municipalidad de Kimbiri.
           </motion.p>
@@ -80,20 +79,20 @@ export function HeroSection() {
             <Button
               asChild
               size="lg"
-              className="bg-[#4CAF50] hover:bg-[#45a049] text-white border-none rounded-full px-8"
+              className="bg-primary/80 hover:bg-primary text-white border-none rounded-full px-8"
             >
-              <Link href="/modulos">
-                Acceder a los módulos
+              <a href="/sgd/login.do" target="_blank" rel="noopener noreferrer">
+                Iniciar Sesión
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </a>
             </Button>
             <Button
               asChild
               variant="outline"
               size="lg"
-              className="bg-transparent text-white border-white/30 hover:bg-white/10 rounded-full px-8"
+              className="bg-transparent text-white hover:text-white border-white/30 hover:bg-white/10 rounded-full px-8"
             >
-              <Link href="/info">Ver información</Link>
+              <a href="/mpd/inicio.do" target="_blank" rel="noopener noreferrer">Mesa de partes</a>
             </Button>
           </motion.div>
         </motion.div>

@@ -7,7 +7,6 @@ import { Home, FileText, Info, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ModeToggle } from "@/components//theme/mode-toogle";
 import Image from "next/image";
 
 const routes = [
@@ -36,7 +35,7 @@ export function Navbar() {
               className="rounded-full"
             />
           </div>
-          <div className="hidden md:flex items-center rounded-full bg-black/30 backdrop-blur-md border border-white/10 p-1">
+          <div className="hidden md:flex items-center rounded-full bg-black/30 backdrop-blur-md border border-white/10 p-1 gap-2">
             {routes.map((route) => (
               <Link
                 key={route.href}
@@ -55,7 +54,6 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center ml-4">
-            <ModeToggle />
             <Sheet>
               <SheetTrigger asChild className="md:hidden ml-2">
                 <Button

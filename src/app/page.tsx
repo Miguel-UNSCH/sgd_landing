@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import Link from "next/link"
-import { ArrowRight, FileText, Settings, Users } from "lucide-react"
+import { ArrowRight, FileSearch, FileText, Users } from "lucide-react"
 import { motion, useInView } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
@@ -25,10 +25,10 @@ export default function Home() {
           transition={{ duration: 0.7 }}
           className="mb-12 text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tighter dark:text-white md:text-5xl">
+          <h2 className="mb-4 text-3xl font-bold leading-tight tracking-tighter text-foreground md:text-5xl">
             Sistema de Gestión Documental
           </h2>
-          <p className="mx-auto max-w-[700px] text-lg dark:text-white/70">
+          <p className="mx-auto max-w-[700px] text-lg text-muted-foreground">
             Gestión eficiente de trámites documentarios con firma digital e interoperabilidad
           </p>
         </motion.div>
@@ -45,9 +45,9 @@ export default function Home() {
             description="Plataforma para que los ciudadanos puedan realizar trámites de manera virtual."
           />
           <FeatureCard
-            icon={<Settings className="h-10 w-10" />}
-            title="Configuración Avanzada"
-            description="Módulos adicionales para la configuración y seguimiento de documentos."
+            icon={<FileSearch className="h-10 w-10" />}
+            title="Seguimiento de documentos"
+            description="Módulo de seguimiento de documentos para conocer el estado de los trámites."
           />
         </div>
 
@@ -60,7 +60,7 @@ export default function Home() {
           <Button
             asChild
             size="lg"
-            className="bg-[#4CAF50] hover:bg-[#45a049] dark:text-white border-none rounded-full px-8"
+            className="bg-primary hover:bg-primary text-primary-foreground border-none rounded-full px-8"
           >
             <Link href="/modulos">
               Ver todos los módulos
